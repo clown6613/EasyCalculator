@@ -8,62 +8,111 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun MainScreen(){
-    Scaffold(modifier = Modifier) {
+    Scaffold(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.padding(it)) {
             Text(
                 text = "a",
-                modifier = Modifier.fillMaxWidth().weight(0.1f)
+                modifier = Modifier.fillMaxWidth().weight(0.5f)
             )
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)
+            Column(
+                modifier = Modifier.fillMaxSize().weight(0.5f),
+                verticalArrangement = Arrangement.spacedBy(50.dp)
+            ){
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(text = "7")
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(
+                            text = "7",
+                            fontSize = 35.sp
+                        )
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "8",
+                            fontSize = 35.sp
+                        )
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(
+                            text = "9",
+                            fontSize = 35.sp
+                        )
+                    }
                 }
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "8")
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "4",
+                            fontSize = 35.sp
+                        )
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "5",
+                            fontSize = 35.sp
+                        )
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "6",
+                            fontSize = 35.sp
+                        )
+                    }
                 }
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "9")
-                }
-            }
-            Row(modifier = Modifier.fillMaxWidth()) {
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "4")
-                }
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "5")
-                }
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "6")
-                }
-            }
-            Row(modifier = Modifier.fillMaxWidth()) {
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "1")
-                }
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "2")
-                }
-                Button(onClick = { /*TODO*/ },
-                    modifier = Modifier.size(80.dp)) {
-                    Text(text = "3")
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "1",
+                            fontSize = 35.sp
+                        )
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "2",
+                            fontSize = 35.sp
+                        )
+                    }
+                    Button(
+                        onClick = { /*TODO*/ },
+                        modifier = Modifier.size(80.dp)
+                    ) {
+                        Text(text = "3",
+                            fontSize = 35.sp
+                        )
+                    }
                 }
             }
         }
