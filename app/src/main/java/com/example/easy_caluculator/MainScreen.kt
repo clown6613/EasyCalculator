@@ -1,15 +1,15 @@
 package com.example.easy_caluculator
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,6 +32,7 @@ fun MainScreen() {
                     modifier = Modifier
                         .width(80.dp)
                         .height(50.dp),
+                    shape = RoundedCornerShape(40.dp),
                     colors = buttonColors(backgroundColor = Color.Red)
                 ) {
                     Text(
@@ -42,12 +43,14 @@ fun MainScreen() {
                         color = Color.White
                     )
                 }
-                Spacer(modifier = Modifier.width(80.dp))
+                Spacer(modifier = Modifier.width(70.dp))
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier
                         .width(80.dp)
-                        .height(50.dp)
+                        .height(50.dp),
+                    colors = buttonColors(backgroundColor = Color.Green),
+                    shape = RectangleShape
                 ) {
                     Text(
                         text = "=",
@@ -61,12 +64,10 @@ fun MainScreen() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(100.dp))
 
             Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(0.5f),
+                modifier = Modifier.weight(0.7f),
                 verticalArrangement = Arrangement.spacedBy(50.dp)
             ) {
                 Row(
