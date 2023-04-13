@@ -1,5 +1,8 @@
 package com.example.easy_caluculator
 
+import android.annotation.SuppressLint
+import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -7,6 +10,8 @@ import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -15,17 +20,40 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    viewModel: MainViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsState()
+
     Scaffold(modifier = Modifier.padding(20.dp)) {
         Column(modifier = Modifier.padding(it)) {
-            Text(
-                text = "a",
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(0.5f)
-            )
+                    .padding(bottom = 50.dp)
+                    .background(color = Color.LightGray)
+            ) {
+                Row {
+                    Text(
+                        text = uiState.formula,
+                        fontSize = 40.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
+                    Text(
+                        text = uiState.sum.toString(),
+                        modifier = Modifier.fillMaxWidth(),
+                        fontSize = 40.sp,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+
             Row(modifier = Modifier.fillMaxWidth()) {
                 Button(
                     onClick = { /*TODO*/ },
@@ -75,7 +103,7 @@ fun MainScreen() {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(7) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -174,5 +202,5 @@ fun MainScreen() {
 @Preview
 @Composable
 private fun PreviewMainScreen() {
-    MainScreen()
+    MainScreen(MainViewModel())
 }
