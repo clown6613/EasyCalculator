@@ -2,7 +2,9 @@ package com.example.easy_caluculator
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults.buttonColors
@@ -38,27 +40,34 @@ fun MainScreen(
                     .background(color = Color.LightGray)
             ) {
                 Column {
-                    Text(
-                        text = "formula",
-                        fontSize = 40.sp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
+                    Row{
+                        Text(
+                            text = uiState.formula,
+                            fontSize = 50.sp,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .horizontalScroll(rememberScrollState()),
+                            textAlign = TextAlign.Center
+                        )
+                    }
                     Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = uiState.sum.toString(),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 20.dp,end = 40.dp),
-                        fontSize = 40.sp,
-                        textAlign = TextAlign.End
-                    )
+                    if(!uiState.isEqual){
+                        Text(
+                            text = uiState.sum.toString(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 20.dp, end = 40.dp),
+                            color = Color.Gray,
+                            fontSize = 40.sp,
+                            textAlign = TextAlign.End
+                        )
+                    }
                 }
             }
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { viewModel.clickAcButton() },
                     modifier = Modifier
                         .width(80.dp)
                         .height(50.dp),
@@ -75,7 +84,7 @@ fun MainScreen(
                 }
                 Spacer(modifier = Modifier.width(70.dp))
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { viewModel.clickEqualButton() },
                     modifier = Modifier
                         .width(80.dp)
                         .height(50.dp),
