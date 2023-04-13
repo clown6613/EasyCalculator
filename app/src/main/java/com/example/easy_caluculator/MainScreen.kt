@@ -1,7 +1,6 @@
 package com.example.easy_caluculator
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,18 +37,21 @@ fun MainScreen(
                     .padding(bottom = 50.dp)
                     .background(color = Color.LightGray)
             ) {
-                Row {
+                Column {
                     Text(
-                        text = uiState.formula,
+                        text = "formula",
                         fontSize = 40.sp,
                         modifier = Modifier
                             .fillMaxWidth()
                     )
+                    Spacer(modifier = Modifier.weight(1f))
                     Text(
                         text = uiState.sum.toString(),
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 20.dp,end = 40.dp),
                         fontSize = 40.sp,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.End
                     )
                 }
             }
@@ -112,7 +114,7 @@ fun MainScreen(
                         )
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(8) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -121,7 +123,7 @@ fun MainScreen(
                         )
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(9) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -135,7 +137,7 @@ fun MainScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(4) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -144,7 +146,7 @@ fun MainScreen(
                         )
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(5) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -153,7 +155,7 @@ fun MainScreen(
                         )
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(6) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -167,7 +169,7 @@ fun MainScreen(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(1) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -176,7 +178,7 @@ fun MainScreen(
                         )
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(2) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
@@ -185,7 +187,7 @@ fun MainScreen(
                         )
                     }
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { viewModel.calSum(3) },
                         modifier = Modifier.size(80.dp)
                     ) {
                         Text(
