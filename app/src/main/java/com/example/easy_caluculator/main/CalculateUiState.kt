@@ -1,4 +1,4 @@
-package com.example.easy_caluculator
+package com.example.easy_caluculator.main
 
 data class CalculateUiState(
     val formula: String = "",

@@ -2,6 +2,7 @@ package com.example.easy_caluculator
 
 import android.content.Context
 import androidx.room.Room
+import com.example.easy_caluculator.room.AppDatabase
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext

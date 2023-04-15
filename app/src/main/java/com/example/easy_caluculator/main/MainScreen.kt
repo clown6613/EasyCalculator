@@ -6,10 +6,10 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
+import androidx.compose.material.*
 import androidx.compose.material.ButtonDefaults.buttonColors
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,10 +22,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.easy_caluculator.main.MainViewModel
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun MainScreen(
+    onNavigationToHistory: () -> Unit,
     viewModel: MainViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -40,7 +42,7 @@ fun MainScreen(
                     .background(color = Color.LightGray)
             ) {
                 Column {
-                    Row{
+                    Row {
                         Text(
                             text = uiState.formula,
                             fontSize = 50.sp,
@@ -51,7 +53,7 @@ fun MainScreen(
                         )
                     }
                     Spacer(modifier = Modifier.weight(1f))
-                    if(!uiState.isEqual){
+                    if (!uiState.isEqual) {
                         Text(
                             text = uiState.sum.toString(),
                             modifier = Modifier
@@ -65,7 +67,10 @@ fun MainScreen(
                 }
             }
 
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 Button(
                     onClick = { viewModel.clickAcButton() },
                     modifier = Modifier
@@ -82,7 +87,6 @@ fun MainScreen(
                         color = Color.White
                     )
                 }
-                Spacer(modifier = Modifier.width(70.dp))
                 Button(
                     onClick = { viewModel.clickEqualButton() },
                     modifier = Modifier
@@ -99,7 +103,15 @@ fun MainScreen(
                         textAlign = TextAlign.Justify,
                         color = Color.White
                     )
-
+                }
+                IconButton(
+                    onClick = onNavigationToHistory,
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.History,
+                        contentDescription = "",
+                        modifier = Modifier.size(40.dp)
+                    )
                 }
             }
 
@@ -113,105 +125,52 @@ fun MainScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Button(
-                        onClick = { viewModel.calSum(7) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "7",
-                            fontSize = 35.sp
-                        )
-                    }
-                    Button(
-                        onClick = { viewModel.calSum(8) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "8",
-                            fontSize = 35.sp
-                        )
-                    }
-                    Button(
-                        onClick = { viewModel.calSum(9) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "9",
-                            fontSize = 35.sp
-                        )
-                    }
+                    NumberButton(number = 7, viewModel = viewModel)
+                    NumberButton(number = 8, viewModel = viewModel)
+                    NumberButton(number = 9, viewModel = viewModel)
                 }
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Button(
-                        onClick = { viewModel.calSum(4) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "4",
-                            fontSize = 35.sp
-                        )
-                    }
-                    Button(
-                        onClick = { viewModel.calSum(5) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "5",
-                            fontSize = 35.sp
-                        )
-                    }
-                    Button(
-                        onClick = { viewModel.calSum(6) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "6",
-                            fontSize = 35.sp
-                        )
-                    }
+                    NumberButton(number = 4, viewModel = viewModel)
+                    NumberButton(number = 5, viewModel = viewModel)
+                    NumberButton(number = 6, viewModel = viewModel)
                 }
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Button(
-                        onClick = { viewModel.calSum(1) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "1",
-                            fontSize = 35.sp
-                        )
-                    }
-                    Button(
-                        onClick = { viewModel.calSum(2) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "2",
-                            fontSize = 35.sp
-                        )
-                    }
-                    Button(
-                        onClick = { viewModel.calSum(3) },
-                        modifier = Modifier.size(80.dp)
-                    ) {
-                        Text(
-                            text = "3",
-                            fontSize = 35.sp
-                        )
-                    }
+                    NumberButton(number = 1, viewModel = viewModel)
+                    NumberButton(number = 2, viewModel = viewModel)
+                    NumberButton(number = 3, viewModel = viewModel)
                 }
             }
         }
     }
 }
 
+@Composable
+private fun NumberButton(
+    number: Int,
+    viewModel: MainViewModel
+) {
+    Button(
+        onClick = { viewModel.calSum(number) },
+        modifier = Modifier.size(80.dp)
+    ) {
+        Text(
+            text = number.toString(),
+            fontSize = 35.sp
+        )
+    }
+}
+
 @Preview
 @Composable
 private fun PreviewMainScreen() {
-    MainScreen(MainViewModel())
+    MainScreen(
+        onNavigationToHistory = {},
+        MainViewModel()
+    )
 }

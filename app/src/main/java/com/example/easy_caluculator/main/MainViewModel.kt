@@ -1,4 +1,4 @@
-package com.example.easy_caluculator
+package com.example.easy_caluculator.main
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel

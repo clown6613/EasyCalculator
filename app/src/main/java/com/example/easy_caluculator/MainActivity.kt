@@ -3,11 +3,10 @@ package com.example.easy_caluculator
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.ui.Modifier
-import com.example.easy_caluculator.ui.theme.Easy_caluculatorTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.easy_caluculator.room.History
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,13 +14,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Easy_caluculatorTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    MainScreen()
+            val navController = rememberNavController()
+            NavHost(navController = navController, startDestination = "main") {
+                composable(route = "main") {
+                    MainScreen({ navController.navigate("history") })
+                }
+                composable(route = "history") {
+                    HistoryScreen(
+                        { navController.navigate("main") }, listOf(
+                            History(1, "1+1+1=2"),
+                            History(1, "1+1+1=2"),
+                            History(1, "1+1+1=2"),
+                            History(1, "1+1+1=2")
+                        )
+                    )
                 }
             }
         }

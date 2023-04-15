@@ -1,4 +1,4 @@
-package com.example.easy_caluculator
+package com.example.easy_caluculator.room
 
 import androidx.room.Dao
 import androidx.room.Delete
