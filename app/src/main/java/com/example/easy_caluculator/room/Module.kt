@@ -1,8 +1,7 @@
-package com.example.easy_caluculator
+package com.example.easy_caluculator.room
 
 import android.content.Context
 import androidx.room.Room
-import com.example.easy_caluculator.room.AppDatabase
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -11,7 +10,6 @@ import dagger.hilt.components.SingletonComponent
 @dagger.Module
 @InstallIn(SingletonComponent::class)
 object Module {
-
     @Provides
     fun provideDatabase(
         @ApplicationContext context: Context

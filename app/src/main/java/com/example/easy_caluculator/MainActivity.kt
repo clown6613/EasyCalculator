@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.easy_caluculator.history.HistoryScreen
 import com.example.easy_caluculator.room.History
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,7 +22,8 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(route = "history") {
                     HistoryScreen(
-                        { navController.navigate("main") }, listOf(
+                        { navController.navigate("main") },
+                        listOf(
                             History(1, "1+1+1=2"),
                             History(1, "1+1+1=2"),
                             History(1, "1+1+1=2"),

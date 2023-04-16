@@ -1,4 +1,4 @@
-package com.example.easy_caluculator
+package com.example.easy_caluculator.history
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -24,25 +24,6 @@ fun HistoryScreen(
 ) {
     Scaffold {
         Box(modifier = Modifier.fillMaxSize()) {
-            Row(
-                modifier = Modifier
-                    .background(Color.White)
-                    .fillMaxWidth()
-                    .align(Alignment.TopCenter),
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Spacer(modifier = Modifier.weight(1f))
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .background(Color.White)
-                        .padding(top = 10.dp)
-                        .height(40.dp)
-                ) {
-                    Text(text = "履歴の全件削除")
-                }
-                Spacer(modifier = Modifier.weight(1f))
-            }
             LazyColumn(modifier = Modifier.padding(it)) {
                 item { Spacer(modifier = Modifier.height(50.dp)) }
                 items(forums) {
@@ -59,8 +40,25 @@ fun HistoryScreen(
                 modifier = Modifier
                     .background(Color.White)
                     .fillMaxWidth()
+                    .align(Alignment.TopCenter),
+            ) {
+                Spacer(modifier = Modifier.weight(1f))
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                        .height(40.dp)
+                ) {
+                    Text(text = "履歴の全件削除")
+                }
+                Spacer(modifier = Modifier.weight(1f))
+            }
+
+            Row(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth()
                     .align(Alignment.BottomCenter),
-                verticalAlignment = Alignment.Bottom
             ) {
                 Spacer(modifier = Modifier.weight(1f))
                 Button(
