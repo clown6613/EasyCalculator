@@ -39,13 +39,12 @@ class MainViewModel @Inject constructor(
 
     fun clickEqualButton() {
         viewModelScope.launch {
-            val newHistory = History(history = _uiState.value.formula)
+            val newHistory = History(history = _uiState.value.formula + "=" + _uiState.value.sum)
             historyDao.insertHistory(newHistory)
             Log.d(MainViewModel::class.simpleName, "Success create history")
-            _uiState.value =
-                _uiState.value.copy(formula = sum.value.toString(), sum = 0, isEqual = true)
-            inputNumberList = mutableListOf(sum.value)
         }
-
+        _uiState.value =
+            _uiState.value.copy(formula = sum.value.toString(), sum = 0, isEqual = true)
+        inputNumberList = mutableListOf(sum.value)
     }
 }

@@ -21,12 +21,7 @@ class MainActivity : ComponentActivity() {
                     MainScreen({ navController.navigate("history") })
                 }
                 composable(route = "history") {
-                    HistoryScreen(
-                        { navController.navigate("main") },
-                        listOf(
-
-                        )
-                    )
+                    HistoryScreen({ navController.navigate("main") })
                 }
             }
         }
