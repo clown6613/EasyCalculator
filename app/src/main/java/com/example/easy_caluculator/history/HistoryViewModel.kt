@@ -1,4 +1,5 @@
 package com.example.easy_caluculator.history
 
-class HistoryViewModel {
-}
+import androidx.lifecycle.ViewModel
+
+class HistoryViewModel : ViewModel()
