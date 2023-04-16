@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.easy_caluculator.history.HistoryScreen
-import com.example.easy_caluculator.room.History
+import com.example.easy_caluculator.main.MainScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,10 +24,7 @@ class MainActivity : ComponentActivity() {
                     HistoryScreen(
                         { navController.navigate("main") },
                         listOf(
-                            History(1, "1+1+1=2"),
-                            History(1, "1+1+1=2"),
-                            History(1, "1+1+1=2"),
-                            History(1, "1+1+1=2")
+
                         )
                     )
                 }

@@ -80,11 +80,6 @@ fun HistoryScreen(
 private fun PreviewHistoryScreen() {
     HistoryScreen(
         onNavigationToMain = {},
-        forums = listOf(
-            History(1, "1+1+1=2"),
-            History(1, "1+1+1=2"),
-            History(1, "1+1+1=2"),
-            History(1, "1+1+1=2")
-        )
+        forums = listOf()
     )
 }

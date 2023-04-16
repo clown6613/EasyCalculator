@@ -1,4 +1,4 @@
-package com.example.easy_caluculator
+package com.example.easy_caluculator.main
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -21,14 +21,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.easy_caluculator.main.MainViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun MainScreen(
     onNavigationToHistory: () -> Unit,
-    viewModel: MainViewModel = viewModel()
+    viewModel: MainViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -170,7 +169,7 @@ private fun NumberButton(
 @Composable
 private fun PreviewMainScreen() {
     MainScreen(
-        onNavigationToHistory = {},
-        MainViewModel()
+        onNavigationToHistory = { /*TODO*/ },
+        viewModel = hiltViewModel()
     )
 }
